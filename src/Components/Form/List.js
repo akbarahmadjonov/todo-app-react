@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Item from "../Item";
 
 const Form = () => {
-  const [todos, setTodos] = useState(
+  const [todos  , setTodos] = useState(
     JSON.parse(localStorage.getItem("todos")) || []
   );
   let elInput = useRef();

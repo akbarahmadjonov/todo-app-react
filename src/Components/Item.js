@@ -5,7 +5,7 @@ const Item = ({ id, text, isCompleted, todos, setTodos }) => {
   const deleteTodo = (todoId) => {
     const filteredTodo = todos.filter((arrayTodo) => arrayTodo.id !== todoId);
     setTodos([...filteredTodo]);
-    toast.error("Task has been deleted permanently!");
+    toast.error("Yoo!, Task has been deleted permanently!");
   };
 
   const editTodo = (todoId) => {
@@ -13,17 +13,38 @@ const Item = ({ id, text, isCompleted, todos, setTodos }) => {
     const filteredTodo = todos.find((arrayTodo) => arrayTodo.id === todoId);
     filteredTodo.text = newPrompt;
     setTodos([...todos]);
+    toast.info("Yoo!, Task has been edited!");
+  };
+
+  const handeCheck = (inputId) => {
+    const filteredInputId = todos.find(
+      (todosInputVal) => todosInputVal.id == inputId
+    );
+    console.log(filteredInputId);
+    filteredInputId.isCompleted = !filteredInputId.isCompleted;
+    setTodos([...todos]);
+
+    toast.success("Yoo!, Task has been checked!");
+    if (!filteredInputId.isCompleted) {
+      toast.info("Yoo!, Task has been unchecked!");
+    }
   };
 
   return (
     <li className="list-group-item d-flex align-items-center">
       <input
         className="me-3 form-check-input"
-        // onChange={handleInput}
         checked={isCompleted}
         type="checkbox"
+        onChange={() => handeCheck(id)}
       />
-      <span>
+      <span
+        className={
+          isCompleted
+            ? "text-decoration-line-through text-success fw-bold"
+            : "fw-bold"
+        }
+      >
         {id}. {text}
       </span>
       <button
