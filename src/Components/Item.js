@@ -48,13 +48,13 @@ const Item = ({ id, text, isCompleted, todos, setTodos }) => {
         {id}. {text}
       </span>
       <button
-        className="btn btn-warning ms-auto me-3"
+        className="btn btn-success ms-auto me-3"
         onClick={() => editTodo(id)}
       >
-        EDIT
+        <i className="fas fa-pen"></i> EDIT
       </button>
       <button className="btn btn-danger" onClick={() => deleteTodo(id)}>
-        DELETE
+        <i className="fas fa-trash"></i> DELETE
       </button>
     </li>
   );
